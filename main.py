@@ -2,6 +2,7 @@
 # code ref from https://www.pyimagesearch.com/2015/07/16/where-did-sift-and-surf-go-in-opencv-3/
 import cv2
 import numpy as np
+
 print(cv2.__version__)
 print(np.__version__)
 print(cv2.__file__)
