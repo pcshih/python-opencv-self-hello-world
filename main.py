@@ -10,10 +10,21 @@ print(cv2.__file__)
 image = cv2.imread('test_image.jpg')
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
+cv2.imshow('test_image', image)
+#cv2.imshow('test_image_gray', gray)
+#cv2.waitKey(0)
+#cv2.destroyAllWindows()
+
 sift = cv2.xfeatures2d.SIFT_create()
 (kps, descs) = sift.detectAndCompute(gray, None)
-print("# kps: {}, descriptors: {}".format(len(kps), descs.shape))
+print(f'# kps: {len(kps)}, descriptors: {descs.shape}')
 
 surf = cv2.xfeatures2d.SURF_create()
 (kps, descs) = surf.detectAndCompute(gray, None)
-print("# kps: {}, descriptors: {}".format(len(kps), descs.shape))
+print(f'# kps: {len(kps)}, descriptors: {descs.shape}')
+
+wb = cv2.xphoto.createGrayworldWB()
+wb.setSaturationThreshold(0.99)
+image_wb = wb.balanceWhite(image)
+
+cv2.imwrite('test_image_wb.jpg', image_wb)

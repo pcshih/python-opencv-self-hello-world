@@ -16,7 +16,9 @@ RUN \
 groupadd -g ${GID} ${USER_NAME} && \
 useradd --create-home --uid ${UID} --gid ${GID} --shell /bin/bash ${USER_NAME} && \
 apt-get update -y && \
-apt-get install -y zsh wget unzip git nano && \
+apt-get install -y zsh wget unzip git nano locales && \
+locale-gen "en_US.UTF-8" && \
+update-locale LC_ALL="en_US.UTF-8" && \
 wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O - | zsh || true && \
 apt-get install -y software-properties-common && \
 add-apt-repository ppa:deadsnakes/ppa && \

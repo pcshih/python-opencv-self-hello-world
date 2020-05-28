@@ -21,7 +21,7 @@ $ docker build \
 ```shell
 $ docker run \
 --gpus all \
--it \
+-it -d \
 --volume ${PWD}:${PWD} \
 --workdir ${PWD} \
 --name python-opencv-self \
